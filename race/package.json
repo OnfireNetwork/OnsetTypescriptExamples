@@ -1,0 +1,13 @@
+{
+  "name": "race",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "otb"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@onfire-network/onset-typescript-builder": "^1.0.6"
+  }
+}
