@@ -17,8 +17,8 @@ function playAudioFile(file: string): void {
 Client.listenRemote("PlayAudioFile2", playAudioFile);
 
 Client.listenRemote("RaceCountdown", (time: number) => {
-	Client.printChat("Race countdown: " + time);
-	let countdownText = Client.getGraphicsManager().createTextBox(new Vector2d(0.0, -200.0), '<span size="80" style="italic" color="#42f448">GO GO GO!</>', "center");
+	Client.print("Race countdown: " + time);
+	let countdownText = Client.getGraphics().createTextBox(new Vector2d(0.0, -200.0), '<span size="80" style="italic" color="#42f448">GO GO GO!</>', "center");
 	countdownText.setAnchors(new Vector2d(0.5, 0.5), new Vector2d(0.5, 0.5));
 	countdownText.setAlignment(new Vector2d(0.5, 0.5));
 	if (time == 3) {
@@ -40,13 +40,13 @@ Client.listenRemote("RaceCountdown", (time: number) => {
 Client.listenRemote("OnRaceJoin", (worldTime: number) => {
 	setInput(true);
 	if (worldTime && worldTime != -1)
-		Client.getWorldManager().setTime(worldTime);
+		Client.getWorld().setTime(worldTime);
 });
 
 Client.listenRemote("OnRaceStart", (timeForRace: number) => {
-	Client.printChat('<span color="#88eb00" size="18">The race starts now!</>');
+	Client.print('<span color="#88eb00" size="18">The race starts now!</>');
 	setInput(false);
-	textRaceInfo = Client.getGraphicsManager().createTextBox(new Vector2d(50.0, 100.0), "-", "left");
+	textRaceInfo = Client.getGraphics().createTextBox(new Vector2d(50.0, 100.0), "-", "left");
 	textRaceInfo.setAnchors(new Vector2d(0.0, 0.5), new Vector2d(0.0, 0.5));
 	textRaceInfo.setAlignment(new Vector2d(0.0, 0.5));
 	raceTime = timeForRace;
@@ -79,7 +79,7 @@ Client.listenRemote("ServerUpdateRaceData", (checkpoint: number, maxCheckpoints:
 });
 
 function setRaceTextInfo(check: number, maxChecks: number, pos: number, maxRacers: number): void {
-	let player = Client.getWorldManager().getLocalPlayer();
+	let player = Client.getWorld().getLocalPlayer();
 	if (textRaceInfo !== undefined && player.isInVehicle()) {
 		let vehicle = player.getVehicle();
 		let speed = Math.floor(vehicle.getSpeed());
