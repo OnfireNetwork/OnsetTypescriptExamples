@@ -1,0 +1,15 @@
+{
+  "name": "ormtest",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "otb"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@onfire-network/onset-typescript-builder": "^1.0.6",
+    "@onfire-network/onset-typescript-api": "^1.0.2",
+    "@onfire-network/onset-typescript-orm": "^1.0.3"
+  }
+}
